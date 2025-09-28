@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>브랜드 성장 프로그램 (with AI) - 주얼리 브랜드 성장 전략</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a237e 0%, #303f9f 50%, #3f51b5 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: dataFlow 20s linear infinite;
+        }
+
+        @keyframes dataFlow {
+            0% { transform: translateX(-10px) translateY(-10px); }
+            100% { transform: translateX(0px) translateY(0px); }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 3.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ffffff, #e3f2fd, #bbdefb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(255,255,255,0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)); }
+        }
+
+        .tagline {
+            font-size: 1.7rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 20px 50px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 25px rgba(0,0,0,0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 0 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 12px 25px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #1a237e;
+            background: linear-gradient(135deg, rgba(26, 35, 126, 0.1), rgba(63, 81, 181, 0.1));
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3.5rem;
+            color: #1a237e;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(45deg, #1a237e, #3f51b5);
+            border-radius: 3px;
+        }
+
+        /* Problem Solution Section */
+        .problem-solution {
+            background: linear-gradient(135deg, #1a237e 0%, #303f9f 100%);
+            color: white;
+            margin: 0 -2rem;
+            padding: 5rem 2rem;
+        }
+
+        .problem-solution .section-title {
+            color: white;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3.5rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .problem-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: block;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+        }
+
+        .problem-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1.5rem;
+            color: #e3f2fd;
+        }
+
+        .problem-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8eaf6 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(45deg, #1a237e, #3f51b5, #5c6bc0);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 70px rgba(26, 35, 126, 0.15);
+            border-color: rgba(26, 35, 126, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #1a237e, #3f51b5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: #1a237e;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #555;
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+
+        .feature-highlight {
+            background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            border-left: 4px solid #1a237e;
+        }
+
+        .feature-highlight strong {
+            color: #1a237e;
+        }
+
+        /* Demo Section */
+        .demo {
+            background: linear-gradient(135deg, #263238 0%, #37474f 100%);
+            color: white;
+            margin: 0 -2rem;
+        }
+
+        .demo .section-title {
+            color: white;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .demo-content h3 {
+            font-size: 2.3rem;
+            margin-bottom: 2rem;
+            color: #64b5f6;
+        }
+
+        .demo-content p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .demo-features {
+            list-style: none;
+        }
+
+        .demo-features li {
+            padding: 1rem 0;
+            padding-left: 3rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .demo-features li::before {
+            content: '📊';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .demo-visual {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .report-mockup {
+            background: linear-gradient(135deg, #1a237e, #3f51b5);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 1.5rem 0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #64b5f6;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #1a237e 0%, #3f51b5 100%);
+            color: white;
+            margin: 0 -2rem;
+        }
+
+        .about .section-title {
+            color: white;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .profile-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(15px);
+            padding: 4rem;
+            border-radius: 30px;
+            border: 3px solid rgba(255,255,255,0.2);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+        }
+
+        .profile-avatar {
+            width: 160px;
+            height: 160px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e);
+            border-radius: 50%;
+            margin: 0 auto 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            border: 6px solid rgba(255,255,255,0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .profile-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .profile-info p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-highlight {
+            background: linear-gradient(45deg, #64b5f6, #90caf9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: #263238;
+            color: #64b5f6;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-info a {
+            color: #90caf9;
+            text-decoration: none;
+            margin: 0 1.5rem;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .contact-info a:hover {
+            color: #e3f2fd;
+            text-shadow: 0 0 15px rgba(227, 242, 253, 0.5);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .data-pulse {
+            animation: dataPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes dataPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 3rem 1rem;
+            }
+
+            .logo {
+                font-size: 2.8rem;
+            }
+
+            .tagline {
+                font-size: 1.4rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 2.3rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .problem-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .demo-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content fade-in">
+            <h1 class="logo data-pulse">📊 브랜드 성장 프로그램 (with AI)</h1>
+            <p class="tagline">주얼리 브랜드 성장을 위한 종합 비즈니스 인텔리전스 플랫폼</p>
+            <a href="#features" class="cta-button">무료 분석 리포트 받기</a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <ul class="nav-links">
+                <li><a href="#problem">해결 과제</a></li>
+                <li><a href="#features">AI 분석 기능</a></li>
+                <li><a href="#demo">리포트 샘플</a></li>
+                <li><a href="#about">개발자 소개</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Problem Solution Section -->
+        <section id="problem" class="section problem-solution">
+            <div class="container">
+                <h2 class="section-title">브랜드 성장 프로그램이 해결하는 브랜드 과제들</h2>
+                <div class="problem-grid">
+                    <div class="problem-card fade-in data-pulse">
+                        <span class="problem-icon">📈</span>
+                        <h3>매출 성장 전략 부재</h3>
+                        <p>어떤 상품이 잘 팔리는지, 언제 매출이 오르는지, 고객들이 무엇을 원하는지 명확한 데이터 기반 전략이 없어 브랜드 성장에 한계를 느끼고 계시나요?</p>
+                    </div>
+                    <div class="problem-card fade-in data-pulse">
+                        <span class="problem-icon">🎯</span>
+                        <h3>타겟 고객 분석의 어려움</h3>
+                        <p>우리 브랜드 고객들의 정확한 연령대, 구매 패턴, 선호도를 파악하기 어려워서 마케팅 전략을 수립하고 신제품 기획에 어려움을 겪고 계시죠?</p>
+                    </div>
+                    <div class="problem-card fade-in data-pulse">
+                        <span class="problem-icon">⚡</span>
+                        <h3>경쟁사 대비 경쟁력 분석 부족</h3>
+                        <p>경쟁 브랜드들과 비교해서 우리의 장단점이 무엇인지, 시장에서의 포지션은 어디인지, 어떤 방향으로 차별화해야 할지 막막하신가요?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="section features">
+            <div class="container">
+                <h2 class="section-title">브랜드 성장 프로그램의 핵심 분석 기능</h2>
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">👥</div>
+                        <h3>고객 구매 행동 심화 분석</h3>
+                        <p>구매자의 연령, 성별, 지역, 구매 시간대, 결제 방식, 재구매율 등 모든 데이터를 분석하여 고객 페르소나를 정확히 구축합니다.</p>
+                        <div class="feature-highlight">
+                            <strong>분석 항목:</strong> 연령별 구매 분포, 가격대별 선호도, 계절별 트렌드, 리피트 구매 패턴, 이탈 고객 특성
+                        </div>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">💎</div>
+                        <h3>상품 성과 & 트렌드 분석</h3>
+                        <p>잘 팔리는 아이템과 안 팔리는 아이템을 분석하고, 앞으로 어떤 스타일의 상품을 출시해야 할지 AI가 예측합니다.</p>
+                        <div class="feature-highlight">
+                            <strong>제공 정보:</strong> 베스트셀러 요인 분석, 시즌별 트렌드, 신상품 추천, 재고 최적화 전략
+                        </div>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🔄</div>
+                        <h3>경쟁사 & 크로스셀링 분석</h3>
+                        <p>고객들이 다른 브랜드에서 어떤 제품을 구매하는지 분석하여 새로운 비즈니스 기회를 발견합니다.</p>
+                        <div class="feature-highlight">
+                            <strong>핵심 인사이트:</strong> 경쟁사 구매 패턴, 크로스브랜드 선호도, 시장 점유율 분석, 포지셔닝 전략
+                        </div>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">⚡</div>
+                        <h3>운영 효율성 분석</h3>
+                        <p>배송 시간, CS 응답 속도, 반품률 등 운영 데이터를 분석하여 고객 만족도 향상 포인트를 찾아냅니다.</p>
+                        <div class="feature-highlight">
+                            <strong>최적화 영역:</strong> 배송 시간 개선, CS 품질 향상, 반품 감소 전략, 고객 만족도 증대
+                        </div>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">🎯</div>
+                        <h3>마케팅 전략 & 목표 설정</h3>
+                        <p>데이터 기반으로 브랜드 목표를 설정하고, 쿠폰 전략, 기획전, 협업 인플루언서까지 종합적으로 추천합니다.</p>
+                        <div class="feature-highlight">
+                            <strong>전략 수립:</strong> 매출 목표 설정, 쿠폰 최적화, 기획전 타이밍, 인플루언서 매칭, ROI 예측
+                        </div>
+                    </div>
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">📊</div>
+                        <h3>실시간 대시보드 & 알림</h3>
+                        <p>중요한 지표 변화를 실시간으로 모니터링하고, 즉시 대응해야 할 사항들을 스마트하게 알려드립니다.</p>
+                        <div class="feature-highlight">
+                            <strong>스마트 알림:</strong> 매출 급증/급감, 재고 부족, 고객 불만 급증, 트렌드 변화 감지
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Section -->
+        <section id="demo" class="section demo">
+            <div class="container">
+                <h2 class="section-title">AI 분석 리포트 샘플</h2>
+                <div class="demo-container fade-in">
+                    <div class="demo-content">
+                        <h3>월간 브랜드 성과 리포트</h3>
+                        <p>매달 자동으로 생성되는 종합 분석 리포트로 브랜드의 모든 것을 한눈에 파악하세요!</p>
+                        <ul class="demo-features">
+                            <li><strong>고객 분석:</strong> 신규/기존 고객 비율, 연령대별 구매 패턴</li>
+                            <li><strong>상품 성과:</strong> 베스트/워스트 아이템 분석 및 개선 방안</li>
+                            <li><strong>경쟁 분석:</strong> 시장 포지션 및 경쟁우위 요소</li>
+                            <li><strong>운영 효율:</strong> 배송, CS, 품질 관리 성과 평가</li>
+                            <li><strong>성장 전략:</strong> 다음 달 실행 계획 및 목표 설정</li>
+                        </ul>
+                    </div>
+                    <div class="demo-visual data-pulse">
+                        <div class="report-mockup">
+                            <h4>🏆 11월 브랜드 성과 요약</h4>
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <div class="metric-value">+32%</div>
+                                    <div>매출 성장</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">25-35세</div>
+                                    <div>핵심 고객층</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">미니멀 링</div>
+                                    <div>인기 카테고리</div>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-value">12시간</div>
+                                    <div>평균 배송</div>
+                                </div>
+                            </div>
+                            <p style="margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                                <strong>🎯 다음 달 핵심 전략:</strong><br>
+                                "겨울 시즌 타겟팅으로 골드 컬렉션 확대,<br>
+                                25-30대 직장인 대상 선물용 세트 출시 추천"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="container">
+                <h2 class="section-title">개발자 소개</h2>
+                <div class="about-content fade-in">
+                    <div class="profile-card">
+                        <div class="profile-avatar data-pulse">👨‍💻</div>
+                        <div class="profile-info">
+                            <h3>김시윤 (Kim Si-yoon)</h3>
+                            <p><strong class="profile-highlight">전공:</strong> 컴퓨터공학과</p>
+                            <p><strong class="profile-highlight">소속:</strong> 한양대학교 공학대학원</p>
+                            <p><strong class="profile-highlight">담당 업무:</strong> 데이터 분석 및 AI 예측 모델링</p>
+                            <br>
+                            <p>이커머스 브랜드들이 데이터를 제대로 활용하지 못해 성장 기회를 놓치는 현실을 보고 브랜드 성장 프로그램을 개발하게 되었습니다. 
+                            복잡한 비즈니스 데이터를 쉽게 이해할 수 있는 인사이트로 변환하여 브랜드의 지속가능한 성장을 돕는 것이 저의 목표입니다.</p>
+                            <br>
+                            <p><em class="profile-highlight">"데이터 기반 의사결정으로 모든 브랜드가 성공할 수 있도록 돕겠습니다"</em></p>
